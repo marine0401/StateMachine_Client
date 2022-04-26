@@ -19,6 +19,7 @@ SOURCES +=\
     main.cpp \
     mainwindow.cpp \
     mysocket.cpp \
+    protocol.cpp \
     qrencode-4.1.0/bitstream.c \
     qrencode-4.1.0/mask.c \
     qrencode-4.1.0/mmask.c \
