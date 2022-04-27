@@ -2,10 +2,10 @@
 #include "protocol.h"
 MySocket::MySocket() :QObject()
 {
-    send_buffer.reserve(3);
-    send_buffer.append(0x57);
-    send_buffer.append(0x01);
-    send_buffer.append(0x01);
+//    send_buffer.reserve(3);
+//    send_buffer.append(0x57);
+//    send_buffer.append(0x01);
+//    send_buffer.append(0x01);
 }
 
 MySocket::~MySocket()
@@ -17,10 +17,12 @@ void MySocket::init(QString ip,quint16 port)
 {
     m_socket = new QTcpSocket();
     m_socket->connectToHost(ip,port);
+
 //    connect(m_socket,&QTcpSocket::disconnected,[=](){
 //        delete m_socket;
 //        m_socket = nullptr;
 //    });
+
     connect(m_socket,&QTcpSocket::readyRead,this,&MySocket::read);
 
 
@@ -79,14 +81,14 @@ void MySocket::read()
 
 void MySocket::on_to_get_message()
 {
-    send_buffer.append(0x01);
-    send_buffer.append(0x01);
-    send_buffer[2] = ((unsigned short)send_buffer.size() >> 8) & 0xff;
-    send_buffer[1] = (unsigned short)(send_buffer.size()) & 0xff;
+//    send_buffer.append(0x01);
+//    send_buffer.append(0x01);
+//    send_buffer[2] = ((unsigned short)send_buffer.size() >> 8) & 0xff;
+//    send_buffer[1] = (unsigned short)(send_buffer.size()) & 0xff;
 
-    m_socket->write(send_buffer);
+    m_socket->write(getMacAddress());
     m_socket->waitForBytesWritten();
-    send_buffer.remove(3,3);
+//    send_buffer.remove(3,3);
 }
 void MySocket::on_to_disconnect()
 {

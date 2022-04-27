@@ -1,6 +1,14 @@
 ﻿#ifndef PROTOCOL_H
 #define PROTOCOL_H
 #define SYNC 0x57
+#include <QByteArray>
+typedef enum{
+    MAC_ADDRESS = 0x01,
+}eCmdID; // e代表枚举
+typedef enum{
+    MALLOC_SUCCESS = 0x00,
+    MALLOC_ERROR = 0x01
+}eErrorMsg; // e代表枚举
 struct packet{
     unsigned char sync;
     unsigned short length;
@@ -9,6 +17,6 @@ struct packet{
 }__attribute__((gcc_struct,packed));
 typedef struct packet Packet;
 
-
+QByteArray getMacAddress(eErrorMsg *error= nullptr);
 
 #endif // PROTOCOL_H
