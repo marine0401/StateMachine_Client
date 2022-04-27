@@ -16,7 +16,7 @@ typedef enum{
 }eErrorMsg; // e代表枚举
 
 struct packet{
-    unsigned char sync;
+    unsigned char sync = 0x57;
     unsigned short length;
     unsigned char cmdID;
     unsigned char data[0];

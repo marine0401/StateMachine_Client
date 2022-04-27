@@ -11,6 +11,7 @@ QByteArray getMacAddress(eErrorMsg *errorMsg)
 {
     int packetLen = sizeof(Packet) + 1; // 1个字节给 data
     Packet *protocolPacket = (Packet * )malloc(packetLen);
+    memset(protocolPacket, 0 , packetLen);
     if(nullptr == protocolPacket)
     {
         *errorMsg = MALLOC_ERROR;
