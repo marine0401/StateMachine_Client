@@ -90,6 +90,8 @@ void MySocket::on_to_get_message()
     m_socket->waitForBytesWritten();
 //    send_buffer.remove(3,3);
 }
+
+
 void MySocket::on_to_disconnect()
 {
     m_socket->disconnectFromHost();
