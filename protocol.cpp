@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 ﻿
-=======
 #include <QDebug>
 
 #include "protocol.h"
@@ -33,4 +31,4 @@ QByteArray getMacAddress(eErrorMsg *errorMsg)
 
     return packet;
 }
->>>>>>> origin/feature/modifySend
+
