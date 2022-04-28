@@ -10,7 +10,7 @@ MySocket::MySocket() :QObject()
 
 MySocket::~MySocket()
 {
-
+    delete m_socket;
 }
 
 void MySocket::init(QString ip,quint16 port)

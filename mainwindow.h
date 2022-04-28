@@ -45,5 +45,7 @@ private:
     MySocket *m_socket;
     void GenerateQRcode(QString tempstr);
 
+    QString addColon(const QString &str1, const QString &str2);
+
 };
 #endif // MAINWINDOW_H

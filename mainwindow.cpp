@@ -56,12 +56,14 @@ void MainWindow::on_get_message(QByteArray macAddress)
     QJsonArray jl;
     jl = QJsonArray::fromStringList(l);
     qDebug() << jl.at(0) <<endl;
-
-    char * data = macAddress.data();
-
-    GenerateQRcode(QString(macAddress));
-
+    QString temp = "{" + addColon("deviceName","rk3568") +","
+            +addColon("deviceID",QString(macAddress)) +"," + addColon("deviceType","Cortex-A55")  +  "}";
+    GenerateQRcode(temp);
     ui->display->setText(QString(macAddress));
+}
+QString MainWindow::addColon(const QString &str1, const QString &str2)
+{
+    return QString("\""+str1+"\" : \" "  + str2 + "\"");
 }
 void MainWindow::GenerateQRcode(QString tempstr)
 {
