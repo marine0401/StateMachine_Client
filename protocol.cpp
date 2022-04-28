@@ -15,13 +15,16 @@ QByteArray getMacAddress(eErrorMsg *errorMsg)
     memset(protocolPacket, 0 , packetLen);
     if(nullptr == protocolPacket)
     {
-        *errorMsg = MALLOC_ERROR;
+        if(errorMsg != nullptr)
+        {
+           *errorMsg = MALLOC_ERROR;
+        }
         return nullptr;
     }
     protocolPacket->sync = SYNC;
     protocolPacket->length = packetLen;
-    protocolPacket->cmdID = MAC_ADDRESS;
-    protocolPacket->data[0] = 1;
+    protocolPacket->cmdID = GET_MESSAGE;
+    protocolPacket->data[0] = MAC_ADDRESS;
     QByteArray packet((char *)protocolPacket, packetLen);
     free(protocolPacket); // 记得释放内存
     if(errorMsg != nullptr)

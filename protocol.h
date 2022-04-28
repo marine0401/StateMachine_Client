@@ -7,10 +7,12 @@
 
 
 typedef enum{
-    MAC_ADDRESS = 0x01,
+    GET_MESSAGE = 0x01,
 }eCmdID; // e代表枚举
 
-
+typedef enum{
+    MAC_ADDRESS = 0x01,
+}eContent; // e代表枚举
 
 
 typedef enum{
